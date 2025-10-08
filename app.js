@@ -25,23 +25,7 @@ const rl = readline.createInterface({
 
 // Event: messageLogged
 logger.on("messageLogged", (message) => {
-  const timestamp = new Date().toISOString();
-  const logEntry = `[${timestamp}] ${message}\n`;
 
-  fs.appendFile("log.txt", logEntry, (err) => {
-    if (err) {
-      console.error("Error writing to log file:", err);
-    }
-  });
-});
-
-// Event: exitApp
-logger.on("exitApp", () => {
-  console.log("Goodbye! All messages saved to log.txt");
-  rl.close();
-});
-
-// Start CLI
 rl.prompt();
 
 rl.on("line", (input) => {
